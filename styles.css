@@ -1,0 +1,1126 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Meal Planner — styles.css  (v4)
+   All colours via Obsidian CSS variables → works in every theme, light+dark.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Scoped focus ────────────────────────────────────────────────────────── */
+.meal-planner-view *:focus-visible {
+    outline: 2px solid var(--interactive-accent);
+    outline-offset: 1px;
+}
+
+/* ─── Shared atoms ────────────────────────────────────────────────────────── */
+
+.meal-planner-muted {
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.meal-planner-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-top: 4px;
+}
+
+.meal-planner-tag {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 9px;
+    background: var(--background-modifier-hover);
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.7;
+    white-space: nowrap;
+}
+
+.meal-planner-btn-row {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+/* ─── Outer shell ─────────────────────────────────────────────────────────── */
+
+.meal-planner-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    background: var(--background-primary);
+}
+
+/* ─── Global tab bar ──────────────────────────────────────────────────────── */
+
+.meal-planner-global-header {
+    display: flex;
+    align-items: stretch;
+    background: var(--background-secondary);
+    border-bottom: 1px solid var(--background-modifier-border);
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.meal-planner-global-tab {
+    flex: 1;
+    padding: 10px 4px 9px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    transition:
+        color 80ms,
+        border-color 80ms,
+        background 80ms;
+    white-space: nowrap;
+}
+
+.meal-planner-global-tab:hover {
+    color: var(--text-normal);
+    background: var(--background-modifier-hover);
+}
+
+.meal-planner-global-tab.is-active {
+    color: var(--interactive-accent);
+    border-bottom-color: var(--interactive-accent);
+    font-weight: 600;
+}
+
+/* Density toggle lives in Settings — hidden from the header */
+.meal-planner-density-toggle {
+    display: none !important;
+}
+
+.meal-planner-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 12px 12px 20px;
+}
+
+/* ─── PLANNER TAB ─────────────────────────────────────────────────────────── */
+
+.meal-planner-week-nav {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.meal-planner-week-nav button {
+    background: transparent;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-s);
+    cursor: pointer;
+    padding: 4px 10px;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.4;
+    transition:
+        background 80ms,
+        color 80ms;
+}
+
+.meal-planner-week-nav button:hover {
+    background: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+.meal-planner-week-label {
+    flex: 1;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-normal);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.meal-planner-today-btn {
+    font-size: 11px !important;
+    padding: 3px 8px !important;
+}
+
+/* Grid */
+.meal-planner-grid {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-m);
+    overflow: hidden;
+}
+
+.meal-planner-grid__header,
+.meal-planner-grid__row {
+    display: grid;
+    grid-template-columns: 48px repeat(7, 1fr);
+}
+
+.meal-planner-grid__header {
+    background: var(--background-secondary);
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.meal-planner-grid__row {
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.meal-planner-grid__row:last-child {
+    border-bottom: none;
+}
+
+.meal-planner-grid__day-label {
+    padding: 6px 2px 5px;
+    font-size: 10px;
+    color: var(--text-muted);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.3;
+}
+
+.meal-planner-grid__day-label.is-today {
+    color: var(--interactive-accent);
+    font-weight: 700;
+}
+
+.meal-planner-grid__slot-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--text-faint);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 5px;
+    border-right: 1px solid var(--background-modifier-border);
+    background: var(--background-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Cells */
+.meal-planner-grid__cell {
+    padding: 4px 3px 3px;
+    border-left: 1px solid var(--background-modifier-border);
+    min-height: 38px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-start;
+    gap: 2px;
+    position: relative;
+    transition: background 80ms;
+}
+
+.meal-planner-grid__cell:hover {
+    background: var(--background-modifier-hover);
+}
+
+.meal-planner-grid__cell.is-today {
+    box-shadow: inset 2px 0 0 var(--interactive-accent);
+    background: var(
+        --background-modifier-form-field,
+        var(--background-secondary)
+    );
+}
+
+.meal-planner-grid__cell.has-entry {
+    cursor: default;
+}
+
+.meal-planner-grid__cell--dragover {
+    background: var(--background-modifier-hover) !important;
+    outline: 1px dashed var(--interactive-accent);
+    outline-offset: -1px;
+}
+
+/* Empty cell add button */
+.meal-planner-grid__add-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: var(--text-faint);
+    font-size: 16px;
+    line-height: 1;
+    align-self: center;
+    transition: color 80ms;
+}
+
+.meal-planner-grid__cell:hover .meal-planner-grid__add-btn {
+    color: var(--interactive-accent);
+}
+
+/* ── Entry dots ── */
+/* JS inlines width/height/etc as inline styles — override with !important */
+.meal-planner-dot {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    display: inline-block !important;
+    margin: 2px !important;
+    flex-shrink: 0;
+    background: var(--interactive-accent) !important;
+    opacity: 0.65;
+    cursor: pointer;
+    transition:
+        opacity 80ms,
+        transform 80ms;
+    vertical-align: middle;
+    position: relative;
+}
+
+.meal-planner-dot:hover {
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+/* Tooltip */
+.meal-planner-dot[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--background-primary);
+    color: var(--text-normal);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-s);
+    padding: 4px 9px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    z-index: 200;
+    pointer-events: none;
+}
+
+/* ─── Today panel ─────────────────────────────────────────────────────────── */
+
+.meal-planner-today-panel {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: var(--background-secondary);
+    border-radius: var(--radius-m);
+    border: 1px solid var(--background-modifier-border);
+    border-left: 3px solid var(--interactive-accent);
+}
+
+.meal-planner-today-panel h3 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+    color: var(--interactive-accent);
+}
+
+.meal-planner-today-panel__row {
+    display: flex;
+    gap: 6px;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.meal-planner-today-panel__row:last-child {
+    margin-bottom: 0;
+}
+
+.meal-planner-today-panel__slot {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-faint);
+    min-width: 58px;
+    flex-shrink: 0;
+}
+
+.meal-planner-today-panel__link {
+    font-size: 13px;
+    color: var(--text-accent);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.meal-planner-today-panel__link:hover {
+    text-decoration: underline;
+}
+
+.meal-planner-today-panel__pipe {
+    color: var(--text-faint);
+    font-size: 12px;
+}
+
+/* ─── RECIPES TAB ─────────────────────────────────────────────────────────── */
+
+.meal-planner-recipe-toolbar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.meal-planner-search-row {
+    margin-bottom: 10px;
+}
+
+.meal-planner-search {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-s);
+    background: var(--background-primary);
+    color: var(--text-normal);
+    font-size: 13px;
+    box-sizing: border-box;
+    transition: border-color 80ms;
+}
+
+.meal-planner-search:focus {
+    outline: none;
+    border-color: var(--interactive-accent);
+}
+
+/* Recipe list */
+.meal-planner-recipe-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.meal-planner-recipe-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 6px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    cursor: pointer;
+    position: relative;
+    transition: background 80ms;
+}
+
+.meal-planner-recipe-row:last-child {
+    border-bottom: none;
+}
+.meal-planner-recipe-row:hover {
+    background: var(--background-modifier-hover);
+}
+.meal-planner-recipe-row.is-selected {
+    background: var(--background-modifier-hover);
+}
+
+.meal-planner-recipe-row--full {
+    padding: 10px 6px;
+    align-items: flex-start;
+}
+
+.meal-planner-recipe-row--full .meal-planner-recipe-row__left {
+    flex: 1;
+    min-width: 0;
+}
+
+.meal-planner-recipe-row__name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-normal);
+    display: block;
+    line-height: 1.3;
+}
+
+.meal-planner-recipe-row__time {
+    font-size: 11px;
+    color: var(--text-faint);
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.meal-planner-recipe-row__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+    flex-shrink: 0;
+}
+
+/* Hover-reveal action buttons — gradient fade behind them */
+.meal-planner-recipe-row__actions {
+    display: none;
+    align-items: center;
+    gap: 3px;
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--background-modifier-hover) 28%
+    );
+    padding-left: 24px;
+}
+
+.meal-planner-recipe-row:hover .meal-planner-recipe-row__actions {
+    display: flex;
+}
+
+.meal-planner-recipe-row__action {
+    padding: 4px 9px;
+    font-size: 13px;
+    border-radius: var(--radius-s);
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition:
+        background 80ms,
+        color 80ms,
+        border-color 80ms;
+    white-space: nowrap;
+}
+
+.meal-planner-recipe-row__action:hover {
+    background: var(--interactive-accent);
+    border-color: var(--interactive-accent);
+    color: var(--text-on-accent, #fff);
+}
+
+/* ─── PANTRY TAB ──────────────────────────────────────────────────────────── */
+
+/* Move quick-add form above import row using order:
+   The JS renders: pantry-list → bulk-actions → import row → form
+   We use order to visually reposition form above import */
+.meal-planner-pantry-list {
+    order: 1;
+}
+.meal-planner-pantry-bulk-actions {
+    order: 2;
+}
+.meal-planner-pantry-form {
+    order: 3;
+} /* form appears above import */
+.meal-planner-pantry-import {
+    order: 4;
+}
+
+/* Need a flex column context on the pantry container for order to work */
+.meal-planner-content:has(.meal-planner-pantry-list),
+.meal-planner-view .meal-planner-content > * {
+    /* Don't override — apply flex to the direct pantry container instead */
+}
+
+/* The pantry tab content is rendered directly into .meal-planner-content,
+   so we target the pantry section wrapper if present, or apply order
+   via the pantry-specific children of .meal-planner-content */
+.meal-planner-content:has(.meal-planner-pantry-form) {
+    display: flex;
+    flex-direction: column;
+}
+
+.meal-planner-pantry-form {
+    order: 1;
+    margin-bottom: 10px;
+}
+.meal-planner-pantry-list {
+    order: 2;
+    margin-bottom: 6px;
+}
+.meal-planner-pantry-bulk-actions {
+    order: 3;
+}
+.meal-planner-pantry-import {
+    order: 4;
+    margin-bottom: 10px;
+}
+
+/* Pantry cards */
+.meal-planner-pantry-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.meal-planner-pantry-card {
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-m);
+    padding: 10px 12px;
+    transition: background 80ms;
+}
+
+.meal-planner-pantry-card:hover {
+    background: var(--background-modifier-hover);
+}
+
+.meal-planner-pantry-card__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.meal-planner-pantry-card__select {
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: var(--interactive-accent);
+    width: 14px;
+    height: 14px;
+}
+
+.meal-planner-pantry-card__name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-normal);
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.meal-planner-pantry-card__status {
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+/* Meta row — quantity is the hero number */
+.meal-planner-pantry-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 10px;
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.meal-planner-pantry-card__qty {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-normal);
+    line-height: 1.2;
+}
+
+.meal-planner-pantry-card__inventory {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.meal-planner-pantry-card__badge {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 6px;
+    background: rgba(245, 197, 66, 0.15);
+    color: var(--text-warning, #b07d10);
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid rgba(245, 197, 66, 0.3);
+    margin-top: 2px;
+}
+
+.meal-planner-pantry-card__extras {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 7px;
+}
+
+.meal-planner-pantry-card__extra {
+    font-size: 11px;
+    color: var(--text-faint);
+    background: var(--background-modifier-hover);
+    padding: 1px 6px;
+    border-radius: 4px;
+    line-height: 1.6;
+}
+
+.meal-planner-pantry-card__actions {
+    display: flex;
+    gap: 5px;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+/* Icon-only action buttons on pantry cards */
+.meal-planner-pantry-card__action {
+    font-size: 15px;
+    width: 30px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-s);
+    background: transparent;
+    border: 1px solid var(--background-modifier-border);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition:
+        background 80ms,
+        color 80ms;
+    /* Hide original text, show icon via ::before */
+    font-size: 0;
+    line-height: 1;
+}
+
+/* Edit button → pencil icon */
+.meal-planner-pantry-card__action[aria-label*="Edit"]::before {
+    content: "✎";
+    font-size: 15px;
+}
+
+/* Delete button → ✕ */
+.meal-planner-pantry-card__action[aria-label*="Delete"]::before {
+    content: "✕";
+    font-size: 13px;
+}
+
+.meal-planner-pantry-card__action:hover {
+    background: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+/* Delete button destructive colour on hover */
+.meal-planner-pantry-card__action[aria-label*="Delete"]:hover {
+    background: rgba(220, 60, 60, 0.12);
+    border-color: rgba(220, 60, 60, 0.3);
+    color: var(--text-error);
+}
+
+/* Bulk actions */
+.meal-planner-pantry-bulk-actions {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    padding: 6px 0 4px;
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+/* CSV import row */
+.meal-planner-pantry-import {
+    display: flex;
+    gap: 5px;
+}
+
+/* Quick-add form */
+.meal-planner-pantry-form {
+    display: grid;
+    grid-template-columns: 1fr 64px 64px auto;
+    gap: 5px;
+    align-items: center;
+    padding: 9px;
+    background: var(--background-secondary);
+    border-radius: var(--radius-m);
+    border: 1px solid var(--background-modifier-border);
+}
+
+.meal-planner-pantry-form input {
+    padding: 6px 8px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-s);
+    background: var(--background-primary);
+    color: var(--text-normal);
+    font-size: 13px;
+    min-width: 0;
+}
+
+.meal-planner-pantry-form input::placeholder {
+    color: var(--text-faint);
+}
+
+.meal-planner-pantry-form input:focus {
+    outline: none;
+    border-color: var(--interactive-accent);
+}
+
+/* Pantry "Add" button — icon */
+.meal-planner-pantry-form button {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+    border-radius: var(--radius-s);
+    cursor: pointer;
+    transition: background 80ms;
+}
+
+.meal-planner-pantry-form button::before {
+    content: "+";
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 300;
+}
+
+/* Edit modal form */
+.pantry-edit-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 0 2px 14px;
+}
+
+.pantry-edit-form label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.pantry-edit-form input {
+    width: 100%;
+    padding: 7px 10px;
+    border-radius: var(--radius-s);
+    border: 1px solid var(--background-modifier-border);
+    background: var(--background-primary);
+    color: var(--text-normal);
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.pantry-edit-form input:focus {
+    outline: none;
+    border-color: var(--interactive-accent);
+}
+
+/* ─── SHOPPING TAB ────────────────────────────────────────────────────────── */
+
+.meal-planner-shopping-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.meal-planner-shopping-header button {
+    padding: 4px 12px;
+    font-size: 12px;
+    border-radius: var(--radius-s);
+    border: 1px solid var(--background-modifier-border);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition:
+        background 80ms,
+        color 80ms;
+}
+
+.meal-planner-shopping-header button:hover {
+    background: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+.meal-planner-shopping-header button.is-active {
+    background: var(--interactive-accent);
+    border-color: var(--interactive-accent);
+    color: var(--text-on-accent, #fff);
+}
+
+/* Export All → pushed right, icon-style */
+.meal-planner-shopping-header button:last-of-type {
+    margin-left: auto;
+    font-size: 0;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meal-planner-shopping-header button:last-of-type::before {
+    content: "⤓";
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* Add-item form */
+.meal-planner-shopping-add {
+    display: grid;
+    grid-template-columns: 1fr 52px 52px 80px auto;
+    gap: 5px;
+    align-items: center;
+    padding: 8px 9px;
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-m);
+    margin-bottom: 10px;
+}
+
+/* Hide "Add item:" label — placeholders do the job */
+.meal-planner-shopping-add > span {
+    display: none;
+}
+
+.meal-planner-shopping-add input,
+.meal-planner-shopping-add select {
+    padding: 6px 7px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-s);
+    background: var(--background-primary);
+    color: var(--text-normal);
+    font-size: 13px;
+    min-width: 0;
+}
+
+.meal-planner-shopping-add input:focus,
+.meal-planner-shopping-add select:focus {
+    outline: none;
+    border-color: var(--interactive-accent);
+}
+
+/* Shopping "Add" button — icon */
+.meal-planner-shopping-add button {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+    border-radius: var(--radius-s);
+    cursor: pointer;
+    transition: background 80ms;
+}
+
+.meal-planner-shopping-add button::before {
+    content: "+";
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 300;
+}
+
+/* Shopping list */
+.meal-planner-shopping-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-m);
+    overflow: hidden;
+}
+
+.meal-planner-shopping-list li {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 11px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    font-size: 14px;
+    color: var(--text-normal);
+    transition: background 80ms;
+}
+
+.meal-planner-shopping-list li:last-child {
+    border-bottom: none;
+}
+.meal-planner-shopping-list li:hover {
+    background: var(--background-modifier-hover);
+}
+
+/* Item text grows */
+.meal-planner-shopping-list li > :first-child {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Mark purchased / Unmark → checkmark icon */
+/* Delete → ✕ icon */
+.meal-planner-shopping-list li button {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+    border-radius: var(--radius-s);
+    border: 1px solid var(--background-modifier-border);
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition:
+        background 80ms,
+        color 80ms;
+}
+
+/* "Mark purchased" button */
+.meal-planner-shopping-list li button:first-of-type::before {
+    content: "✓";
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.meal-planner-shopping-list li button:first-of-type:hover {
+    background: rgba(60, 180, 100, 0.12);
+    border-color: rgba(60, 180, 100, 0.3);
+}
+
+.meal-planner-shopping-list li button:first-of-type:hover::before {
+    color: #3cb464;
+}
+
+/* "Unmark" button — accent ticked state */
+.meal-planner-shopping-list li.is-acquired button:first-of-type::before {
+    color: #3cb464;
+}
+
+/* "Delete" button */
+.meal-planner-shopping-list li button:last-of-type::before {
+    content: "✕";
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.meal-planner-shopping-list li button:last-of-type:hover {
+    background: rgba(220, 60, 60, 0.12);
+    border-color: rgba(220, 60, 60, 0.3);
+}
+
+.meal-planner-shopping-list li button:last-of-type:hover::before {
+    color: var(--text-error);
+}
+
+/* Acquired item — muted + struck through */
+.meal-planner-shopping-list li.is-acquired {
+    opacity: 0.55;
+}
+
+.meal-planner-shopping-list li.is-acquired > :first-child {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+/* ─── Recipes tab — icon buttons ─────────────────────────────────────────── */
+
+/* "Import from URL" and "New recipe" toolbar buttons */
+.meal-planner-recipe-toolbar button {
+    font-size: 13px;
+    padding: 5px 11px;
+}
+
+/* "Open" action on recipe rows → arrow icon */
+.meal-planner-recipe-row__action[aria-label="Open recipe"] {
+    font-size: 0 !important;
+    width: 28px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meal-planner-recipe-row__action[aria-label="Open recipe"]::before {
+    content: "↗";
+    font-size: 14px;
+}
+
+/* "Delete" action on recipe rows → ✕ icon */
+.meal-planner-recipe-row__action[aria-label="Delete recipe"] {
+    font-size: 0 !important;
+    width: 28px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meal-planner-recipe-row__action[aria-label="Delete recipe"]::before {
+    content: "✕";
+    font-size: 12px;
+}
+
+.meal-planner-recipe-row__action[aria-label="Delete recipe"]:hover {
+    background: rgba(220, 60, 60, 0.12) !important;
+    border-color: rgba(220, 60, 60, 0.3) !important;
+    color: var(--text-error) !important;
+}
+
+/* ─── Modals — import & recipe forms ─────────────────────────────────────── */
+
+.meal-planner-status {
+    font-size: 13px;
+    padding: 5px 0 2px;
+    min-height: 22px;
+}
+
+.meal-planner-status--error {
+    color: var(--text-error);
+}
+.meal-planner-status--loading {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.meal-planner-preview {
+    margin: 10px 0;
+    padding: 12px;
+    background: var(--background-secondary);
+    border-radius: var(--radius-m);
+    border: 1px solid var(--background-modifier-border);
+}
+
+.meal-planner-preview h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* Assign modal recipe picker */
+.meal-planner-assign-modal .meal-planner-recipe-list {
+    max-height: 280px;
+    overflow-y: auto;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-s);
+    margin-bottom: 8px;
+}
+
+/* ─── Settings ────────────────────────────────────────────────────────────── */
+
+.meal-planner-slots-container {
+    margin-bottom: 8px;
+}
+
+/* ─── Density variants ────────────────────────────────────────────────────── */
+
+.meal-planner-density-compact .meal-planner-grid__cell {
+    min-height: 34px;
+}
+.meal-planner-density-compact .meal-planner-dot {
+    width: 7px !important;
+    height: 7px !important;
+}
+
+.meal-planner-density-comfortable .meal-planner-grid__cell {
+    min-height: 50px;
+}
+.meal-planner-density-comfortable .meal-planner-grid__day-label {
+    font-size: 11px;
+    padding: 7px 3px 6px;
+}
+.meal-planner-density-comfortable .meal-planner-dot {
+    width: 10px !important;
+    height: 10px !important;
+}
+
+/* ─── Remnants ────────────────────────────────────────────────────────────── */
+.meal-planner-recipe-thumb {
+    display: none !important;
+}

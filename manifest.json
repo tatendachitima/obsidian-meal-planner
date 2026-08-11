@@ -1,0 +1,11 @@
+{
+  "id": "obsidian-meal-planner",
+  "name": "Meal Planner",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Plan meals, manage recipes, track pantry and shopping, and sync meals into daily notes.",
+  "author": "Tatenda Chitima",
+  "authorUrl": "https://github.com/tatendachitima",
+  "fundingUrl": "",
+  "isDesktopOnly": false
+}

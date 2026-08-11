@@ -1,0 +1,14 @@
+# Build artifacts
+node_modules/
+main.js
+
+# Personal plugin data — never commit
+data.json
+
+# Misc
+*.zip
+.DS_Store
+
+# Dev scratch docs
+PATCH_PLAN.md
+README_PATCH_SUMMARY.md
