@@ -27,7 +27,7 @@ import type { PantryManager } from "./pantryManager";
 import type { ShoppingListManager } from "./shoppingListManager";
 import type { KitchenInventorySync } from "./kitchenInventorySync";
 
-export const PLANNER_VIEW_TYPE = "meal-planner-view";
+export const PLANNER_VIEW_TYPE = "weekly-meal-planner-view";
 
 export class PlannerView extends ItemView {
   private currentWeekMonday: string;
