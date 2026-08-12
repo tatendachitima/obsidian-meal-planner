@@ -19,7 +19,7 @@ Settings → Community plugins → Browse → search "Meal Planner".
 
 ### Manual / BRAT (until then)
 - **BRAT:** add `https://github.com/tatendachitima/obsidian-meal-planner` via the BRAT plugin.
-- **Manual:** download the latest release, unzip into `<vault>/.obsidian/plugins/obsidian-meal-planner/`, enable the plugin in Settings → Community plugins.
+- **Manual:** download the latest release, unzip into `<vault>/.obsidian/plugins/meal-planner/`, enable the plugin in Settings → Community plugins.
 
 ## Usage
 
