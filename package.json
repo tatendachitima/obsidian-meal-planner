@@ -1,5 +1,5 @@
 {
-  "name": "obsidian-meal-planner",
+  "name": "meal-planner",
   "version": "1.0.0",
   "description": "Meal planning, recipe management, and daily note integration for Obsidian",
   "main": "main.js",

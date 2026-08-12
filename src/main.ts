@@ -70,7 +70,7 @@ export default class MealPlannerPlugin extends Plugin {
 
     // Commands
     this.addCommand({
-      id: "open-meal-planner",
+      id: "open-planner",
       name: "Open meal planner",
       callback: () => this.activatePlannerView(),
     });
